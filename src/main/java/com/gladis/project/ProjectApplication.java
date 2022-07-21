@@ -21,7 +21,6 @@ public class ProjectApplication {
 	@PostConstruct
 	public void post() {
 		employeeService.findAll();
-		System.out.println("Called");
 	}
 
 }

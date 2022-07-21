@@ -1,31 +1,37 @@
 package com.gladis.project.service.employee;
 
-import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Profile("prod")
+@Profile("dev")
 @Service
 public class EmployeeServiceImpl1 implements EmployeeService {
 
-    @Value("${project.prefix}")
+    @Value("${prefix}")
     private String prefix;
 
-    @Value("${project.suffix}")
-    private Integer suffix;
+    @Value("${suffix}")
+    private String suffix;
+
+    private static final Logger LOG = LoggerFactory.getLogger(EmployeeServiceImpl1.class);
 
     public List<?> findAll() {
         return null;
     }
 
-    public String getEmployeeName(String firstName, String lastName) {
-        return prefix
-                + firstName.toLowerCase().substring(0, 3)
-                + lastName.toLowerCase().substring(0, 3)
+    public String getEmployeeNickname(String firstName, String lastName) {
+        LOG.info(firstName);
+        LOG.info(lastName);
+        String nickname = prefix
+                + firstName.substring(0, 3)
+                + lastName.substring(0, 3)
                 + suffix;
+        LOG.info(nickname);
+        return nickname;
     }
 }
