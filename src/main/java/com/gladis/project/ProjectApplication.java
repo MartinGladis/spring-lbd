@@ -12,8 +12,8 @@ import javax.annotation.PostConstruct;
 public class ProjectApplication {
 
 	@Autowired
-	@Qualifier("impl2")
 	EmployeeService employeeService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectApplication.class, args);
 	}
