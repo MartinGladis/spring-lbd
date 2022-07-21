@@ -2,6 +2,7 @@ package com.gladis.project;
 
 import com.gladis.project.service.employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -11,6 +12,7 @@ import javax.annotation.PostConstruct;
 public class ProjectApplication {
 
 	@Autowired
+	@Qualifier("impl2")
 	EmployeeService employeeService;
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectApplication.class, args);
