@@ -1,8 +1,8 @@
 package com.gladis.project.service.employee;
 
 import com.gladis.project.entity.employee.Employee;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -15,13 +15,13 @@ import java.util.Map;
 @Service
 public class EmployeeServiceImpl1 implements EmployeeService {
 
-    @Value("${prefix}")
+    @Value("${project.prefix}")
     private String prefix;
 
-    @Value("${suffix}")
+    @Value("${project.suffix}")
     private String suffix;
 
-    private static final Logger LOG = LoggerFactory.getLogger(EmployeeServiceImpl1.class);
+    private static final Log LOG = LogFactory.getLog(EmployeeServiceImpl1.class);
 
     private Map<Long, Employee> employeeMap = new HashMap<>();
 
@@ -38,7 +38,7 @@ public class EmployeeServiceImpl1 implements EmployeeService {
                 + firstName.substring(0, 3)
                 + lastName.substring(0, 3)
                 + suffix;
-        LOG.info(nickname);
+        LOG.debug(nickname);
         return nickname;
     }
 
@@ -52,9 +52,8 @@ public class EmployeeServiceImpl1 implements EmployeeService {
         return null;
     }
 
-    public boolean save(Employee employee) {
+    public Employee save(Employee employee) {
         this.employeeMap.put(index, employee);
-        index++;
-        return true;
+        return this.employeeMap.get(index++);
     }
 }
