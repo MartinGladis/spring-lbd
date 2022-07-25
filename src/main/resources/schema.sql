@@ -19,5 +19,5 @@ create table user_stories (
 
 create table sprints_user_stories (
     sprint_id integer not null,
-    user_story_id integer not null,
+    user_story_id integer not null
 );

@@ -17,10 +17,30 @@ public class UserStory {
 
     private String description;
 
-    private Integer storyPointsCount;
+    private Integer storyPoints;
 
     private String status;
 
     @ManyToMany(mappedBy = "userStories")
     private Set<Sprint> sprints;
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Integer getStoryPoints() {
+        return storyPoints;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Set<Sprint> getSprints() {
+        return sprints;
+    }
 }

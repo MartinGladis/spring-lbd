@@ -1,7 +1,6 @@
 package com.gladis.project;
 
 import com.gladis.project.entity.Sprint;
-import com.gladis.project.entity.UserStory;
 import com.gladis.project.service.SprintService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -22,7 +21,7 @@ public class ProjectApplication {
 
 	@PostConstruct
 	public void run() {
-		Sprint sprint = new Sprint("Sprint 2", LocalDate.now(), LocalDate.now().plusDays(7), "xyz", "to do", null);
+		Sprint sprint = new Sprint("Sprint 2", LocalDate.now(), LocalDate.now().plusMonths(1), "xyz", null, null);
 		sprintService.save(sprint);
 	}
 

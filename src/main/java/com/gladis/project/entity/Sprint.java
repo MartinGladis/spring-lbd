@@ -37,4 +37,32 @@ public class Sprint {
         this.status = status;
         this.userStories = userStories;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public String getTarget() {
+        return target;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Set<UserStory> getUserStories() {
+        return userStories;
+    }
 }
