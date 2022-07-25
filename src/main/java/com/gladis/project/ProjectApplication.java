@@ -1,32 +1,29 @@
 package com.gladis.project;
 
-import com.gladis.project.service.employee.EmployeeService;
-import com.gladis.project.service.employee.EmployeeServiceImpl1;
+import com.gladis.project.entity.Sprint;
+import com.gladis.project.entity.UserStory;
+import com.gladis.project.service.SprintService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class ProjectApplication {
-
-	@Autowired
-	EmployeeService employeeService;
-
-	@Autowired
-	EmployeeServiceImpl1 employeeServiceImpl1;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjectApplication.class, args);
 	}
 
+	@Autowired
+	SprintService sprintService;
+
 	@PostConstruct
-	public void post() {
-		employeeService.findAll();
-		employeeServiceImpl1.getEmployeeNickname("Boryc", "Schultz");
+	public void run() {
+		Sprint sprint = new Sprint("Sprint 2", LocalDate.now(), LocalDate.now().plusDays(7), "xyz", "to do", null);
+		sprintService.save(sprint);
 	}
 
 }
