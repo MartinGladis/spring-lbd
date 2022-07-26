@@ -12,5 +12,9 @@ public interface SprintService {
 
     Iterable<UserStory> findUserStoriesById(Long id);
 
-    List<Sprint> findSprintsByDateRange(LocalDate startDate, LocalDate endDate);
+    Iterable<Sprint> findSprintsByDateRange(LocalDate startDate, LocalDate endDate);
+
+    Iterable<Sprint> findAll(boolean tasks);
+
+    List<UserStory> findUserStoryBySprintId(Long id);
 }

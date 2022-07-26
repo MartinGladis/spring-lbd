@@ -8,9 +8,4 @@ public class UserStoryServiceImpl implements UserStoryService {
 
     @Autowired
     UserStoryRepository userStoryRepository;
-
-    public UserStory save(UserStory userStory) {
-
-        return userStoryRepository.save(userStory);
-    }
 }

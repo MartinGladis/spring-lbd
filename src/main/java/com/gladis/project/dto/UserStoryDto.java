@@ -1,16 +1,8 @@
-package com.gladis.project.entity;
+package com.gladis.project.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import java.util.List;
+public class UserStoryDto {
 
-@Entity
-public class UserStory {
 
-    @Id
-    @GeneratedValue
     private Long id;
 
     private String name;
@@ -21,8 +13,13 @@ public class UserStory {
 
     private String status;
 
-    @ManyToMany(mappedBy = "userStories")
-    private List<Sprint> sprints;
+    public UserStoryDto(Long id, String name, String description, Integer storyPoints, String status) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.storyPoints = storyPoints;
+        this.status = status;
+    }
 
     public Long getId() {
         return id;
@@ -64,11 +61,4 @@ public class UserStory {
         this.status = status;
     }
 
-    public List<Sprint> getSprints() {
-        return sprints;
-    }
-
-    public void setSprints(List<Sprint> sprints) {
-        this.sprints = sprints;
-    }
 }

@@ -1,14 +1,10 @@
-package com.gladis.project.entity;
+package com.gladis.project.dto;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
-public class Sprint {
+public class SprintDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -21,24 +17,16 @@ public class Sprint {
 
     private String status;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "sprint_user_story",
-            joinColumns = @JoinColumn(name = "sprint_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_story_id")
-    )
-    private List<UserStory> userStories;
+    private List<SimpleUserStoryDto> userStory;
 
-    public Sprint(String name, LocalDate startDate, LocalDate endDate, String target, String status, List<UserStory> userStories) {
+    public SprintDto(Long id, String name, LocalDate startDate, LocalDate endDate, String target, String status) {
+        this.id = id;
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.target = target;
         this.status = status;
-        this.userStories = userStories;
     }
-
-    public Sprint() {}
 
     public Long getId() {
         return id;
@@ -88,11 +76,11 @@ public class Sprint {
         this.status = status;
     }
 
-    public List<UserStory> getUserStories() {
-        return userStories;
+    public List<SimpleUserStoryDto> getUserStory() {
+        return userStory;
     }
 
-    public void setUserStories(List<UserStory> userStories) {
-        this.userStories = userStories;
+    public void setUserStoryDtos(List<SimpleUserStoryDto> simpleUserStoryDtos) {
+        this.userStory = simpleUserStoryDtos;
     }
 }

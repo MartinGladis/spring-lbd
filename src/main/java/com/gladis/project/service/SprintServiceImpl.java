@@ -35,6 +35,12 @@ public class SprintServiceImpl implements SprintService {
     }
 
     @Override
+    public Iterable<Sprint> findAll(boolean tasks) {
+
+        return sprintRepository.findAll();
+    }
+
+    @Override
     public Iterable<UserStory> findUserStoriesById(Long id) {
         Optional<Sprint> sprintOptional = sprintRepository.findById(id);
         if (!sprintOptional.isPresent()) {
@@ -46,7 +52,7 @@ public class SprintServiceImpl implements SprintService {
     }
 
     @Override
-    public List<Sprint> findSprintsByDateRange(LocalDate startDate, LocalDate endDate) {
+    public Iterable<Sprint> findSprintsByDateRange(LocalDate startDate, LocalDate endDate) {
         Iterable<Sprint> sprints = sprintRepository.findAll();
         List<Sprint> matchingSprints = new ArrayList<>();
         for (Sprint sprint : sprints) {
@@ -56,5 +62,11 @@ public class SprintServiceImpl implements SprintService {
         }
 
         return matchingSprints;
+    }
+
+    @Override
+    public List<UserStory> findUserStoryBySprintId(Long id) {
+        Optional<Sprint> sprint = sprintRepository.findById(id);
+        return sprint.map(Sprint::getUserStories).orElse(null);
     }
 }

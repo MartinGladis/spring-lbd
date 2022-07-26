@@ -1,6 +1,5 @@
 package com.gladis.project;
 
-import com.gladis.project.entity.Sprint;
 import com.gladis.project.repository.SprintRepository;
 import org.junit.jupiter.api.Test;
 
