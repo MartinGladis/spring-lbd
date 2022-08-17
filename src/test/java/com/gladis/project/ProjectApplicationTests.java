@@ -1,15 +1,15 @@
 package com.gladis.project;
 
 import com.gladis.project.repository.SprintRepository;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
+@RequiredArgsConstructor
 class ProjectApplicationTests {
 
-	@Autowired
 	SprintRepository sprintRepository;
 
 	@Test
